@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Business.Abstract
     public interface IMangaService
     {
         List<Manga> GetAll();
+        List<MangaDetailsDto> GetMangaDetails();
         List<Manga> GetAllByGenreId(int genreId);
         List<Manga> GetAllByMangakaId(int mangakaId);
         Manga GetById(int mangaId);
