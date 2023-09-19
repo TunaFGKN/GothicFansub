@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,29 +17,32 @@ namespace Business.Concrete
         {
             _genreDal = genreDal;
         }
-        public void Add(Genre genre)
+        public Result Add(Genre genre)
         {
             _genreDal.Add(genre);
+            return new SuccessResult();
         }
 
-        public void Delete(Genre genre)
+        public Result Delete(Genre genre)
         {
             _genreDal.Delete(genre);
+            return new SuccessResult();
         }
 
-        public List<Genre> GetAll()
+        public DataResult<List<Genre>> GetAll()
         {
-            return _genreDal.GetAll();
+            return new SuccessDataResult<List<Genre>>(_genreDal.GetAll());
         }
 
-        public Genre GetById(int genreId)
+        public DataResult<Genre> GetById(int genreId)
         {
-            return _genreDal.Get(g=>g.GenreId == genreId);
+            return new SuccessDataResult<Genre>(_genreDal.Get(g=>g.GenreId == genreId));
         }
 
-        public void Update(Genre genre)
+        public Result Update(Genre genre)
         {
             _genreDal.Update(genre);
+            return new SuccessResult();
         }
     }
 }

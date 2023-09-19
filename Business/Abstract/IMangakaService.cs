@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IMangakaService
     {
-        List<Mangaka> GetAll();
-        Mangaka GetById(int mangakaId);
-        void Add(Mangaka mangaka);
-        void Update(Mangaka mangaka);
-        void Delete(Mangaka mangaka);
+        DataResult<List<Mangaka>> GetAll();
+        DataResult<Mangaka> GetById(int mangakaId);
+        Result Add(Mangaka mangaka);
+        Result Update(Mangaka mangaka);
+        Result Delete(Mangaka mangaka);
     }
 }

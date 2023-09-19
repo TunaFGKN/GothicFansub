@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IGenreService
     {
-        List<Genre> GetAll();
-        Genre GetById(int genreId);
-        void Add(Genre genre);
-        void Update(Genre genre);
-        void Delete(Genre genre);
+        DataResult<List<Genre>> GetAll();
+        DataResult<Genre> GetById(int genreId);
+        Result Add(Genre genre);
+        Result Update(Genre genre);
+        Result Delete(Genre genre);
     }
 }

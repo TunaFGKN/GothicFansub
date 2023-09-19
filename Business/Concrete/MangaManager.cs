@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,51 +20,54 @@ namespace Business.Concrete
             _mangaDal = mangaDal;
         }
 
-        public void Add(Manga manga)
+        public Result Add(Manga manga)
         {
             // Business Codes....
             _mangaDal.Add(manga);
+            return new SuccessResult("Added");
         }
 
-        public void Delete(Manga manga)
+        public Result Delete(Manga manga)
         {
             // Business Codes....
             _mangaDal.Delete(manga);
+            return new SuccessResult("Deleted");
         }
 
-        public List<Manga> GetAll()
+        public DataResult<List<Manga>> GetAll()
         {
             // Business Codes....
-            return _mangaDal.GetAll();
+            return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(),"msg");
         }
 
-        public List<Manga> GetAllByMangakaId(int mangakaId)
+        public DataResult<List<Manga>> GetAllByMangakaId(int mangakaId)
         {
             // Business Codes....
-            return _mangaDal.GetAll(m => m.MangakaId == mangakaId);
+            return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(m => m.MangakaId == mangakaId),"msg");
         }
 
-        public List<Manga> GetAllByGenreId(int genreId)
+        public DataResult<List<Manga>> GetAllByGenreId(int genreId)
         {
             // Business Codes....
-            return _mangaDal.GetAll(m=> m.GenreId == genreId);
+            return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(m=> m.GenreId == genreId),"msg");
         }
 
-        public Manga GetById(int mangaId)
+        public DataResult<Manga> GetById(int mangaId)
         {
             // Business Codes....
-            return _mangaDal.Get(m=>m.MangaId == mangaId);
+            return new SuccessDataResult<Manga>(_mangaDal.Get(m=>m.MangaId == mangaId));
         }
 
-        public void Update(Manga manga)
+        public Result Update(Manga manga)
         {
             // Business Codes....
             _mangaDal.Update(manga);
+            return new SuccessResult("Updated");
         }
 
-        public List<MangaDetailsDto> GetMangaDetails()
+        public DataResult<List<MangaDetailsDto>> GetMangaDetails()
         {
-            return _mangaDal.GetMangaDetails();
+            return new SuccessDataResult<List<MangaDetailsDto>>(_mangaDal.GetMangaDetails());
         }
     }
 }

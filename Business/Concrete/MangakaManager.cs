@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,34 +17,37 @@ namespace Business.Concrete
         {
             _mangakaDal = mangakaDal;
         }
-        public void Add(Mangaka mangaka)
+        public Result Add(Mangaka mangaka)
         {
             // Business Codes....
             _mangakaDal.Add(mangaka);
+            return new SuccessResult();
         }
 
-        public void Delete(Mangaka mangaka)
+        public Result Delete(Mangaka mangaka)
         {
             // Business Codes....
             _mangakaDal.Delete(mangaka);
+            return new SuccessResult();
         }
 
-        public List<Mangaka> GetAll()
+        public DataResult<List<Mangaka>> GetAll()
         {
             // Business Codes....
-            return _mangakaDal.GetAll();
+            return new SuccessDataResult<List<Mangaka>>(_mangakaDal.GetAll());
         }
 
-        public Mangaka GetById(int mangakaId)
+        public DataResult<Mangaka> GetById(int mangakaId)
         {
             // Business Codes....
-            return _mangakaDal.Get(m=>m.MangakaId == mangakaId);
+            return new SuccessDataResult<Mangaka>(_mangakaDal.Get(m=>m.MangakaId == mangakaId));
         }
 
-        public void Update(Mangaka mangaka)
+        public Result Update(Mangaka mangaka)
         {
             // Business Codes....
             _mangakaDal.Update(mangaka);
+            return new SuccessResult();
         }
     }
 }

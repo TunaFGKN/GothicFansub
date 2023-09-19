@@ -13,17 +13,22 @@ namespace ConsoleUI
             MangakaManager mangakaManager = new MangakaManager(new EfMangakaDal());
             GenreManager genreManager = new GenreManager(new EfGenreDal());
 
-            //mangakaManager.Add(new Mangaka { MangakaId = 1, MangakaName = "Eiichiro Oda" });
-            //mangakaManager.Add(new Mangaka { MangakaId = 2, MangakaName = "Masashi Kishimoto" });
-            //mangakaManager.Add(new Mangaka { MangakaId = 3, MangakaName = "Hirohiko Araki" });
-            //mangakaManager.Add(new Mangaka { MangakaId = 4, MangakaName = "Yoshihiro Togashi" });
-            //mangakaManager.Add(new Mangaka { MangakaId = 5, MangakaName = "Kentaro Miura" });
-            mangakaManager.Add(new Mangaka { MangakaId = 6, MangakaName = "Makoto Yukimura" }); // Vinland Saga
-            mangakaManager.Add(new Mangaka { MangakaId = 7, MangakaName = "Akira Toriyama" }); // Dragon Ball
-            mangakaManager.Add(new Mangaka { MangakaId = 8, MangakaName = "Tuna Figankaplan" }); // Me ;)
-
+            
+            //AddMangaToDB(mangakaManager);
             //GenreManagerTest(genreManager);
         }
+
+        //private static void AddMangaToDB(MangakaManager mangakaManager)
+        //{
+        //    mangakaManager.Add(new Mangaka { MangakaId = 1, MangakaName = "Eiichiro Oda" });
+        //    mangakaManager.Add(new Mangaka { MangakaId = 2, MangakaName = "Masashi Kishimoto" });
+        //    mangakaManager.Add(new Mangaka { MangakaId = 3, MangakaName = "Hirohiko Araki" });
+        //    mangakaManager.Add(new Mangaka { MangakaId = 4, MangakaName = "Yoshihiro Togashi" });
+        //    mangakaManager.Add(new Mangaka { MangakaId = 5, MangakaName = "Kentaro Miura" });
+        //    mangakaManager.Add(new Mangaka { MangakaId = 6, MangakaName = "Makoto Yukimura" }); // Vinland Saga
+        //    mangakaManager.Add(new Mangaka { MangakaId = 7, MangakaName = "Akira Toriyama" }); // Dragon Ball
+        //    mangakaManager.Add(new Mangaka { MangakaId = 8, MangakaName = "Tuna Figankaplan" }); // Me ;)
+        //}
 
         //private static void GenreManagerTest(GenreManager genreManager)
         //{
