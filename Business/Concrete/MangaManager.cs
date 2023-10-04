@@ -1,10 +1,13 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,7 @@ namespace Business.Concrete
             _mangaDal = mangaDal;
         }
 
+        [ValidationAspect(typeof(MangaValidator))]
         public Result Add(Manga manga)
         {
             // Business Codes....

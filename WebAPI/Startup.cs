@@ -17,14 +17,14 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             //IoC
-            services.AddSingleton<IMangaService, MangaManager>();
-            services.AddSingleton<IMangaDal,EfMangaDal>();
+            //services.AddSingleton<IMangaService, MangaManager>();
+            //services.AddSingleton<IMangaDal,EfMangaDal>();
 
-            services.AddSingleton<IMangakaService, MangakaManager>();
-            services.AddSingleton<IMangakaDal, EfMangakaDal>();
+            //services.AddSingleton<IMangakaService, MangakaManager>();
+            //services.AddSingleton<IMangakaDal, EfMangakaDal>();
 
-            services.AddSingleton<IGenreService, GenreManager>();
-            services.AddSingleton<IGenreDal, EfGenreDal>();
+            //services.AddSingleton<IGenreService, GenreManager>();
+            //services.AddSingleton<IGenreDal, EfGenreDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

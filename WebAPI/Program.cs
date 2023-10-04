@@ -1,6 +1,11 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using Business.DependencyResolvers.Autofac;
 using WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 var startup = new Startup(builder.Configuration); // My custom startup class.
 
 startup.ConfigureServices(builder.Services); // Add services to the container.
@@ -29,4 +34,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.WriteLine("App is working");
 app.Run();
