@@ -18,5 +18,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Manga> Mangas{ get; set; }
         public DbSet<Mangaka> Mangakas { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<MangaImage> MangaImages { get; set; }
     }
 }

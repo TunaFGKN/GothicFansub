@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Concrete;
@@ -41,7 +42,7 @@ namespace Business.Concrete
         public DataResult<List<Manga>> GetAll()
         {
             // Business Codes....
-            return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(),"msg");
+            return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(), Messages.MangasListed);
         }
 
         public DataResult<List<Manga>> GetAllByMangakaId(int mangakaId)

@@ -3,6 +3,7 @@ using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
+using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -26,6 +27,11 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<GenreManager>().As<IGenreService>().SingleInstance();
             builder.RegisterType<EfGenreDal>().As<IGenreDal>().SingleInstance();
+
+            builder.RegisterType<MangaImageManager>().As<IMangaImageService>().SingleInstance();
+            builder.RegisterType<EfMangaImageDal>().As<IMangaImageDal>().SingleInstance();
+
+            builder.RegisterType<FileHelperManager>().As<IFileHelper>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
