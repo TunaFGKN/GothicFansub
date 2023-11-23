@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -25,49 +26,46 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(MangaValidator))]
+        [CacheRemoveAspect("IMangaService.Get")]
         public Result Add(Manga manga)
         {
-            // Business Codes....
             _mangaDal.Add(manga);
-            return new SuccessResult("Added");
+            return new SuccessResult(Messages.MangaAdded);
         }
 
         public Result Delete(Manga manga)
         {
-            // Business Codes....
             _mangaDal.Delete(manga);
-            return new SuccessResult("Deleted");
+            return new SuccessResult(Messages.MangaDeleted);
         }
 
+        [CacheAspect]
         public DataResult<List<Manga>> GetAll()
         {
-            // Business Codes....
             return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(), Messages.MangasListed);
         }
 
         public DataResult<List<Manga>> GetAllByMangakaId(int mangakaId)
         {
-            // Business Codes....
             return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(m => m.MangakaId == mangakaId),"msg");
         }
 
         public DataResult<List<Manga>> GetAllByGenreId(int genreId)
         {
-            // Business Codes....
             return new SuccessDataResult<List<Manga>>(_mangaDal.GetAll(m=> m.GenreId == genreId),"msg");
         }
 
+        [CacheAspect]
         public DataResult<Manga> GetById(int mangaId)
         {
-            // Business Codes....
             return new SuccessDataResult<Manga>(_mangaDal.Get(m=>m.MangaId == mangaId));
         }
 
+        [CacheRemoveAspect("IMangaService.Get")]
         public Result Update(Manga manga)
         {
-            // Business Codes....
             _mangaDal.Update(manga);
-            return new SuccessResult("Updated");
+            return new SuccessResult(Messages.MangaUpdated);
         }
 
         public DataResult<List<MangaDetailsDto>> GetMangaDetails()
