@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Utilities.IoC;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Core.Extensions;
 
 namespace WebAPI
 {
@@ -25,6 +28,8 @@ namespace WebAPI
 
             //services.AddSingleton<IGenreService, GenreManager>();
             //services.AddSingleton<IGenreDal, EfGenreDal>();
+
+            services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
