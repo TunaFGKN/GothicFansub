@@ -30,6 +30,8 @@ namespace WebAPI
             //services.AddSingleton<IGenreDal, EfGenreDal>();
 
             services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
